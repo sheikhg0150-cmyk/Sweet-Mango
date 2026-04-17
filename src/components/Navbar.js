@@ -31,7 +31,7 @@ const Navbar = () => {
           ) : (
             <Link to="/login" style={{ background: '#ff8c00', color: '#2c1810', padding: '8px 20px', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>Login</Link>
           )}
-          <a href="https://wa.me/923001234567" style={{ background: '#25D366', color: 'white', padding: '8px 20px', borderRadius: '50px', textDecoration: 'none' }}>📱 WhatsApp</a>
+          <a href="https://wa.me/923285306913" style={{ background: '#25D366', color: 'white', padding: '8px 20px', borderRadius: '50px', textDecoration: 'none' }}>📱 WhatsApp</a>
         </div>
       </div>
     </nav>
