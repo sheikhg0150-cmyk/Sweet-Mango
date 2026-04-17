@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -12,15 +12,7 @@ const AdminReports = () => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (reportType === 'daily') {
-      fetchDailyReport();
-    } else {
-      fetchMonthlyReport();
-    }
-  }, [reportType, selectedDate, selectedMonth, selectedYear]);
-
-  const fetchDailyReport = async () => {
+  const fetchDailyReport = useCallback(async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
@@ -33,9 +25,9 @@ const AdminReports = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedDate]);
 
-  const fetchMonthlyReport = async () => {
+  const fetchMonthlyReport = useCallback(async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
@@ -48,7 +40,15 @@ const AdminReports = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedYear, selectedMonth]);
+
+  useEffect(() => {
+    if (reportType === 'daily') {
+      fetchDailyReport();
+    } else {
+      fetchMonthlyReport();
+    }
+  }, [reportType, selectedDate, selectedMonth, selectedYear, fetchDailyReport, fetchMonthlyReport]);
 
   const COLORS = ['#ff8c00', '#4caf50', '#2196f3', '#9c27b0', '#f44336'];
 

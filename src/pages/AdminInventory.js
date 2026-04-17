@@ -48,16 +48,16 @@ const AdminInventory = () => {
     }
   };
 
-  const getSeasonStatusBadge = (status) => {
-    const badges = {
-      active: { bg: '#4caf50', text: 'Active' },
-      'ending-soon': { bg: '#ff9800', text: 'Ending Soon' },
-      upcoming: { bg: '#2196f3', text: 'Upcoming' },
-      ended: { bg: '#9e9e9e', text: 'Ended' }
-    };
-    const badge = badges[status] || { bg: '#666', text: status };
-    return <span style={{ background: badge.bg, padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>{badge.text}</span>;
-  };
+  // const getSeasonStatusBadge = (status) => {
+  //   const badges = {
+  //     active: { bg: '#4caf50', text: 'Active' },
+  //     'ending-soon': { bg: '#ff9800', text: 'Ending Soon' },
+  //     upcoming: { bg: '#2196f3', text: 'Upcoming' },
+  //     ended: { bg: '#9e9e9e', text: 'Ended' }
+  //   };
+  //   const badge = badges[status] || { bg: '#666', text: status };
+  //   return <span style={{ background: badge.bg, padding: '4px 8px', borderRadius: '4px', fontSize: '12px' }}>{badge.text}</span>;
+  // };
 
   if (loading) return <div>Loading inventory...</div>;
 
