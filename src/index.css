@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .nav-links.open {
+    display: flex;
+  }
+  
+  .nav-links a,
+  .nav-links button {
+    width: 100%;
+    text-align: center;
+  }
+}
