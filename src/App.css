@@ -241,12 +241,19 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.product-quality {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
 .product-card .price {
   font-size: 1.5rem;
   color: #ff8c00;
   font-weight: bold;
   margin: 0.5rem 0;
 }
+
 
 /* Forms */
 .form-group {

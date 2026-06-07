@@ -12,6 +12,9 @@ code {
     monospace;
 }
 
+/* Import design tokens */
+@import './design/tokens.css';
+
 /* Mobile Menu */
 .menu-toggle {
   display: none;

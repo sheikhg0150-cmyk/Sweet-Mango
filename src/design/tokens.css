@@ -1,0 +1,49 @@
+/* Design Tokens */
+:root {
+  /* Primary warm mango colors */
+  --color-primary: #ff8c00; /* mango orange */
+  --color-primary-dark: #e67e00;
+  --color-primary-light: #ffb84d;
+  --color-secondary: #ff4444; /* bright red for accents */
+  --color-background: #fff8e7; /* light warm background */
+  --color-surface: #ffffff; /* cards, panels */
+  --color-text: #2c1810; /* deep brown */
+  --color-muted: #888888;
+  /* Dark mode overrides */
+  --color-background-dark: #2c1810;
+  --color-surface-dark: #3a2a2a;
+  --color-text-dark: #f0e6d2;
+  /* Spacing */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  /* Font */
+  --font-family: 'Outfit', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-sm: 0.875rem;
+}
+/* Dark mode */
+[data-theme='dark'] {
+  --color-primary: var(--color-primary-light);
+  --color-background: var(--color-background-dark);
+  --color-surface: var(--color-surface-dark);
+  --color-text: var(--color-text-dark);
+}
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-family);
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+}

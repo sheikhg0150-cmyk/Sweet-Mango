@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useCart } from '../../contexts/CartContext';
 
 
 const ProductDetail = () => {
@@ -9,6 +10,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(5);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -61,10 +63,52 @@ const ProductDetail = () => {
           {discount > 0 && <p style={{color:'green'}}>Discount: -₨ {discountAmount}</p>}
           <h3>Total: ₨ {total}</h3>
           
-          <button onClick={() => navigate(`/order/${product._id}`, {state:{defaultQuantity:quantity}})}
-            style={{width:'100%', background:'#ff8c00', color:'white', padding:'15px', border:'none', borderRadius:'50px', fontSize:'1.1rem', cursor:'pointer'}}>
-            Order Now → ₨ {total}
+          <button onClick={() => {
+              addToCart(product, quantity);
+              navigate('/cart');
+            }}
+            style={{width:'100%', background:'#ff8c00', color:'white', padding:'15px', border:'none', borderRadius:'50px', fontSize:'1.1rem', cursor:'pointer', marginTop: '1rem'}}>
+            Add to Cart
           </button>
+        </div>
+      </div>
+      
+      {/* Reviews Section */}
+      <div style={{ marginTop: '4rem', background: '#fff', padding: '2rem', borderRadius: '15px' }}>
+        <h2>Customer Reviews & Ratings</h2>
+        <div style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ borderBottom: '1px solid #ddd', paddingBottom: '1rem', marginBottom: '1rem' }}>
+              <p>⭐⭐⭐⭐⭐</p>
+              <p><strong>Ahmad R.</strong> <span style={{ color: '#888', fontSize: '0.9rem' }}>- June 1, 2025</span></p>
+              <p>"Absolutely delicious! The best Chaunsa I've had this season. Arrived perfectly fresh in Islamabad."</p>
+            </div>
+            <div style={{ borderBottom: '1px solid #ddd', paddingBottom: '1rem', marginBottom: '1rem' }}>
+              <p>⭐⭐⭐⭐</p>
+              <p><strong>Sara T.</strong> <span style={{ color: '#888', fontSize: '0.9rem' }}>- May 28, 2025</span></p>
+              <p>"Great quality mangoes, but delivery took an extra day. Still, highly recommended!"</p>
+            </div>
+          </div>
+          <div style={{ flex: 1, background: '#f9f9f9', padding: '1.5rem', borderRadius: '10px' }}>
+            <h3>Leave a Review</h3>
+            <form onSubmit={(e) => { e.preventDefault(); alert('Review submitted!'); }}>
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem' }}>Rating</label>
+                <select style={{ width: '100%', padding: '10px', borderRadius: '5px' }}>
+                  <option>5 Stars - Excellent</option>
+                  <option>4 Stars - Good</option>
+                  <option>3 Stars - Average</option>
+                  <option>2 Stars - Poor</option>
+                  <option>1 Star - Terrible</option>
+                </select>
+              </div>
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem' }}>Your Review</label>
+                <textarea rows="4" style={{ width: '100%', padding: '10px', borderRadius: '5px' }} placeholder="Tell us what you think..." required></textarea>
+              </div>
+              <button type="submit" className="btn-primary" style={{ width: '100%' }}>Submit Review</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
